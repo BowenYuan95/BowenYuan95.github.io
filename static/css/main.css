@@ -92,6 +92,44 @@ nav {
   padding: 4rem 0 3.5rem;
 }
 
+.hero-top {
+  display: flex;
+  align-items: flex-start;
+  gap: 3rem;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.hero-avatar {
+  flex-shrink: 0;
+  width: 140px;
+}
+
+.hero-avatar img {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: center top;
+  border: 0.5px solid var(--border2);
+}
+
+@media (max-width: 600px) {
+  .hero-top {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+  .hero-avatar {
+    width: 100px;
+  }
+  .hero-avatar img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
 .hero-label {
   font-family: var(--mono);
   font-size: 11px;

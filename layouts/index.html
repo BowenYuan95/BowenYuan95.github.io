@@ -3,21 +3,27 @@
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-label">{{ $params.institution }} &middot; {{ $params.role }}</div>
-  <h1>{{ $params.name }}<br><em>researcher &amp; developer</em></h1>
-  <p class="hero-bio">{{ $params.bio }}</p>
-
-  <div class="hero-tags">
-    {{ range .Site.Data.tags }}
-    <span class="tag">{{ . }}</span>
-    {{ end }}
-  </div>
-
-  <div class="hero-links">
-    <a href="{{ $params.cv_file }}" class="btn-primary" target="_blank">Download CV</a>
-    <a href="#contact" class="btn-ghost">Get in touch</a>
+  <div class="hero-top">
+    <div class="hero-text">
+      <div class="hero-label">{{ $params.institution }} &middot; {{ $params.role }}</div>
+      <h1>{{ $params.name }}<br><em>researcher &amp; developer</em></h1>
+      <p class="hero-bio">{{ $params.bio }}</p>
+      <div class="hero-tags">
+        {{ range .Site.Data.tags }}
+        <span class="tag">{{ . }}</span>
+        {{ end }}
+      </div>
+      <div class="hero-links">
+        <a href="{{ $params.cv_file }}" class="btn-primary" target="_blank">Download CV</a>
+        <a href="#contact" class="btn-ghost">Get in touch</a>
+      </div>
+    </div>
+    <div class="hero-avatar">
+      <img src="/images/avatar.jpeg" alt="{{ $params.name }}">
+    </div>
   </div>
 </section>
+
 
 <div class="divider"></div>
 
