@@ -3,24 +3,32 @@
     "year": "Ongoing",
     "title": "Gaze-Adaptive Diminished Reality for Attention Management",
     "description": "This project examines how Diminished Reality (DR) can be used to manage visual attention in AR by selectively reducing irrelevant information. Two approaches are explored: binary visibility and multi-level transparency based on gaze behavior. The system dynamically modulates scene visibility to guide attention without fully removing context. This work contributes to understanding how subtle visual suppression can improve focus in complex environments.",
-    "badges": ["Diminished Reality", "Attention Management", "Transparency Control", "Gaze-Adaptive", "AR Visualization"]
+    "badges": ["Diminished Reality", "Attention Management", "Transparency Control", "Gaze-Adaptive", "AR Visualization"],
+    "published": false,
+    "doi": ""
   },
   {
     "year": "2024–2025",
     "title": "STAGE: Non-Linear AR Task Guidance via Dependency Modeling",
     "description": "This project introduces STAGE, a system that transforms expert AR recordings into structured, replayable task guidance using a Directed Acyclic Graph (DAG). Instead of linear video playback, it segments multimodal data (video, gaze, motion) into meaningful task units and models their dependencies. The system enables users to navigate tasks non-linearly while respecting procedural constraints. It aims to support flexible, real-world workflows where strict step-by-step sequences are insufficient.",
-    "badges": ["AR", "Task Guidance", "DAG", "Multimodal", "Spatial Computing", "Non-linear Workflow"]
+    "badges": ["AR", "Task Guidance", "DAG", "Multimodal", "Spatial Computing", "Non-linear Workflow"],
+    "published": true,
+    "doi": "10.1145/3772363.3798430"
+  },
+  {
+    "year": "2024–2025",
+    "title": "Focus-Aware AR Guidance: Adaptive Playback via Gaze and Location",
+    "description": "This project explores how AR guidance can dynamically adapt to user attention using gaze and spatial context. By detecting whether users are engaged, distracted, or lost, the system adjusts playback speed or pauses automatically. Results show that adaptive guidance improves task accuracy and reduces manual control compared to static playback. The work highlights how minimal, well-chosen signals can outperform more complex multi-modal combinations.",
+    "badges": ["AR", "Focus Awareness", "Adaptive Interface", "Gaze Tracking", "Attention Modeling"],
+    "published": true,
+    "doi": "10.1109/ISMAR67309.2025.00103"
   },
   {
     "year": "2024",
-    "title": "Focus-Aware AR Guidance: Adaptive Playback via Gaze and Location",
-    "description": "This project explores how AR guidance can dynamically adapt to user attention using gaze and spatial context. By detecting whether users are engaged, distracted, or lost, the system adjusts playback speed or pauses automatically. Results show that adaptive guidance improves task accuracy and reduces manual control compared to static playback. The work highlights how minimal, well-chosen signals can outperform more complex multi-modal combinations.",
-    "badges": ["AR", "Focus Awareness", "Adaptive Interface", "Gaze Tracking", "Attention Modeling"]
-  },
-  {
-    "year": "2023",
     "title": "Spatial Guidance Cues in AR: Line vs. Radar Navigation",
     "description": "This project investigates how different visual guidance cues affect user navigation in AR environments. Comparing line-based and radar-based cues, the study finds that egocentric line guidance significantly improves efficiency, reduces head movement, and enhances spatial orientation. Radar cues, while informative, introduce additional cognitive load when mapping 2D representations to 3D space. The findings emphasize the importance of intuitive, embodied visual design in AR systems.",
-    "badges": ["AR Navigation", "Spatial Cues", "Visual Design", "Embodied Interaction", "User Experience"]
+    "badges": ["AR Navigation", "Spatial Cues", "Visual Design", "Embodied Interaction", "User Experience"],
+    "published": true,
+    "doi": "10.1145/3703619.3706047"
   }
 ]

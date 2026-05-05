@@ -293,6 +293,55 @@ section {
   letter-spacing: 0.04em;
 }
 
+.project-pub {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.6rem;
+}
+
+.pub-status {
+  font-family: var(--mono);
+  font-size: 10px;
+  padding: 3px 8px;
+  border-radius: 2px;
+  letter-spacing: 0.05em;
+}
+
+.pub-status.published {
+  background: #d4f7b0;
+  color: #2a6000;
+}
+
+.pub-status.unpublished {
+  background: #f0f0f0;
+  color: #888;
+}
+
+@media (prefers-color-scheme: dark) {
+  .pub-status.published {
+    background: #1a3d00;
+    color: #a0e060;
+  }
+  .pub-status.unpublished {
+    background: #2a2a2a;
+    color: #666;
+  }
+}
+
+.pub-doi {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--fg3);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.pub-doi:hover {
+  color: var(--fg);
+  opacity: 1;
+}
+
 /* ── CV ──────────────────────────────────────────── */
 .cv-section {
   background: var(--bg2);
