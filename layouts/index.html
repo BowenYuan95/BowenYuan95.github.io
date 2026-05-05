@@ -40,7 +40,11 @@
         <div class="project-title">{{ .title }}</div>
         <div class="project-desc">{{ .description }}</div>
       </div>
-      <span class="project-badge">{{ .badge }}</span>
+      <div class="project-badges">
+        {{ range .badges }}
+        <span class="project-badge">{{ . }}</span>
+      {{ end }}
+      </div>
     </div>
     {{ end }}
   </div>
