@@ -4,25 +4,26 @@
 :root {
   --serif: 'EB Garamond', Georgia, serif;
   --mono: 'DM Mono', 'Courier New', monospace;
-  --fg: #1a1a18;
-  --fg2: #5a5a56;
-  --fg3: #9a9a94;
-  --bg: #fafaf8;
-  --bg2: #f2f2ee;
-  --border: rgba(26, 26, 24, 0.12);
-  --border2: rgba(26, 26, 24, 0.22);
-  --accent: #3a9a6e;
+  --fg: #0a0a0a;
+  --fg2: #2a2a2a;
+  --fg3: #888;
+  --bg: #f0ff44;
+  --bg2: #e8f73c;
+  --border: rgba(0, 0, 0, 0.15);
+  --border2: rgba(0, 0, 0, 0.3);
+  --accent: #ff2d6b;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --fg: #e8e8e4;
-    --fg2: #a0a09a;
-    --fg3: #606060;
-    --bg: #141412;
-    --bg2: #1e1e1c;
-    --border: rgba(232, 232, 228, 0.10);
-    --border2: rgba(232, 232, 228, 0.20);
+    --fg: #f0ff44;
+    --fg2: #c8d930;
+    --fg3: #7a8a00;
+    --bg: #0a0a0a;
+    --bg2: #141400;
+    --border: rgba(240, 255, 68, 0.12);
+    --border2: rgba(240, 255, 68, 0.25);
+    --accent: #ff2d6b;
   }
 }
 
@@ -189,8 +190,8 @@ nav {
   font-family: var(--mono);
   font-size: 12px;
   padding: 10px 22px;
-  background: var(--fg);
-  color: var(--bg);
+  background: #ff2d6b;
+  color: #fff;
   border-radius: 2px;
   letter-spacing: 0.04em;
   transition: opacity 0.15s;
@@ -381,12 +382,7 @@ footer {
 }
 
 .status-dot {
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  flex-shrink: 0;
+  background: #ff2d6b;
 }
 
 /* ── Mobile ──────────────────────────────────────── */
