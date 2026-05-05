@@ -1,0 +1,91 @@
+{{ define "main" }}
+{{ $params := .Site.Params }}
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-label">{{ $params.institution }} &middot; {{ $params.role }}</div>
+  <h1>{{ $params.name }}<br><em>researcher &amp; developer</em></h1>
+  <p class="hero-bio">{{ $params.bio }}</p>
+
+  <div class="hero-tags">
+    {{ range .Site.Data.tags }}
+    <span class="tag">{{ . }}</span>
+    {{ end }}
+  </div>
+
+  <div class="hero-links">
+    <a href="{{ $params.cv_file }}" class="btn-primary" target="_blank">Download CV</a>
+    <a href="#contact" class="btn-ghost">Get in touch</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Projects -->
+<section id="projects">
+  <div class="section-header">
+    <span class="section-label">Selected Projects</span>
+  </div>
+  <div class="project-list">
+    {{ range .Site.Data.projects }}
+    <div class="project-item">
+      <div>
+        <div class="project-year">{{ .year }}</div>
+        <div class="project-title">{{ .title }}</div>
+        <div class="project-desc">{{ .description }}</div>
+      </div>
+      <span class="project-badge">{{ .badge }}</span>
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CV -->
+<section id="cv">
+  <div class="section-header">
+    <span class="section-label">Curriculum Vitae</span>
+  </div>
+  <div class="cv-section">
+    <div class="cv-left">
+      <div class="cv-title">Full academic CV</div>
+      <div class="cv-sub">Education, publications, awards &amp; teaching &mdash; updated {{ now.Format "January 2006" }}</div>
+    </div>
+    <a href="{{ $params.cv_file }}" class="cv-btn" target="_blank">&darr; bowen_cv.pdf</a>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="section-header">
+    <span class="section-label">Contact</span>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-item">
+      <div class="contact-type">EMAIL</div>
+      <div class="contact-val">
+        <a href="mailto:{{ $params.email }}">{{ $params.email }}</a>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-type">INSTITUTION</div>
+      <div class="contact-val">{{ $params.institution }}</div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-type">GITHUB</div>
+      <div class="contact-val">
+        <a href="https://{{ $params.github }}" target="_blank">{{ $params.github }}</a>
+      </div>
+    </div>
+    <div class="contact-item">
+      <div class="contact-type">GOOGLE SCHOLAR</div>
+      <div class="contact-val">
+        <a href="https://{{ $params.scholar }}" target="_blank">scholar.google.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}

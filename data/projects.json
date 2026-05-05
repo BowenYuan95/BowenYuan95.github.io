@@ -1,0 +1,20 @@
+[
+  {
+    "year": "2024–2025",
+    "title": "Collaborative MR Soma Cube",
+    "description": "Multiplayer mixed reality puzzle game where distributed users manipulate Soma cube pieces on a shared physical table surface. Built with Unity & Photon Network, with spatial anchor coordinate alignment for sub-centimetre accuracy.",
+    "badge": "Unity · MR"
+  },
+  {
+    "year": "2024",
+    "title": "Spatial Anchor Coordinate Mapping",
+    "description": "Floor-anchor-based algorithm aligning scanned room coordinates with generated room systems using quaternion remapping, enabling consistent object placement across heterogeneous mixed reality environments.",
+    "badge": "Spatial"
+  },
+  {
+    "year": "2023",
+    "title": "HPC Workflow Automation",
+    "description": "Shell scripting suite for GPU node job submission on the Phoenix cluster, with Python environment management, automated result collection, and error-resilient job scheduling.",
+    "badge": "HPC · Python"
+  }
+]

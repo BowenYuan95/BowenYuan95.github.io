@@ -1,0 +1,9 @@
+<nav>
+  <span class="nav-name">{{ upper .Site.Params.name }}</span>
+  <div class="nav-links">
+    <a href="/" {{ if .IsHome }}class="active"{{ end }}>about</a>
+    <a href="/#projects">projects</a>
+    <a href="{{ .Site.Params.cv_file }}" target="_blank">cv</a>
+    <a href="/#contact">contact</a>
+  </div>
+</nav>
