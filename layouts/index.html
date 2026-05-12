@@ -35,33 +35,25 @@
   <div class="project-list">
     {{ range .Site.Data.projects }}
     <div class="project-item">
-      <div>
-        <div class="project-year">{{ .year }}</div>
-        <div class="project-title">{{ .title }}</div>
-        <div class="project-desc">{{ .description }}</div>
-      </div>
+      <div class="project-year">{{ .year }}</div>
+      <div class="project-title">{{ .title }}</div>
+      <div class="project-desc">{{ .description }}</div>
       <div class="project-badges">
         {{ range .badges }}
         <span class="project-badge">{{ . }}</span>
-      {{ end }}
+        {{ end }}
       </div>
       {{ if .published }}
-        <div class="project-pub">
-          <span class="pub-status published">Published</span>
-          {{ if .doi }}
-          <a href="https://doi.org/{{ .doi }}" class="pub-venue" target="_blank">{{ .venue }}</a>
-          {{ end }}
-        </div>
-        {{ else }}
-        <div class="project-pub">
-          <span class="pub-status unpublished">Unpublished</span>
-        </div>
+      <div class="project-pub">
+        <span class="pub-status published">Published</span>
+        {{ if .doi }}
+        <a href="https://doi.org/{{ .doi }}" class="pub-venue" target="_blank">{{ .venue }}</a>
         {{ end }}
       </div>
       {{ else }}
-        <div class="project-pub">
-          <span class="pub-status unpublished">Unpublished</span>
-        </div>
+      <div class="project-pub">
+        <span class="pub-status unpublished">Unpublished</span>
+      </div>
       {{ end }}
     </div>
     {{ end }}
