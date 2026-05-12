@@ -42,5 +42,15 @@
     "published": true,
     "doi": "10.1145/3703619.3706047",
     "venue": "ACM VRCAI 2024"
-  }
+  },
+
+  {
+  "year": "2023",
+  "title": "The Fusion Nexus: Biocognitive Audio-Verbal Interface in Asymmetric XR Collaboration",
+  "description": "FusionNexus is an asymmetric collaboration experience where a VR player guides a real-world player through pose-based tasks. A machine learning model performs real-time pose detection, while the VR player's heartbeat — captured via a Shimmer PPG sensor — controls drum beat tempo in background music, conveying emotional and physical state across realities. The two players collaborate to complete a timed challenge under immersive pressure.",
+  "badges": ["XR", "Asymmetric Collaboration", "HRV", "Pose Detection", "Cross Reality"],
+  "published": true,
+  "doi": "10.1145/3610549.3614594",
+  "venue": "SIGGRAPH Asia 2023 XR"
+  } 
 ]
