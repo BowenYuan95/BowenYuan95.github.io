@@ -47,9 +47,15 @@
       </div>
       {{ if .published }}
         <div class="project-pub">
-        <span class="pub-status published">Published</span>
-        {{ if .doi }}
-        <a href="https://doi.org/{{ .doi }}" class="pub-doi" target="_blank">DOI: {{ .doi }}</a>
+          <span class="pub-status published">Published</span>
+          {{ if .doi }}
+          <a href="https://doi.org/{{ .doi }}" class="pub-venue" target="_blank">{{ .venue }}</a>
+          {{ end }}
+        </div>
+        {{ else }}
+        <div class="project-pub">
+          <span class="pub-status unpublished">Unpublished</span>
+        </div>
         {{ end }}
       </div>
       {{ else }}

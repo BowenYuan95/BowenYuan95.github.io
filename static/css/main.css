@@ -329,15 +329,16 @@ section {
   }
 }
 
-.pub-doi {
+.pub-venue {
   font-family: var(--mono);
   font-size: 11px;
   color: var(--fg3);
   text-decoration: underline;
   text-underline-offset: 3px;
+  letter-spacing: 0.03em;
 }
 
-.pub-doi:hover {
+.pub-venue:hover {
   color: var(--fg);
   opacity: 1;
 }
