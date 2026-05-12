@@ -17,6 +17,15 @@
     "doi": "10.1145/3772363.3798430"
   },
   {
+  "year": "2024–2025",
+  "title": "Location-based Non-linear Playback of AR Task Recording",
+  "description": "This project investigates a non-linear replay approach that automatically segments AR task recordings based on spatial location data. Instead of manual timeline scrubbing, the system enables reviewers to jump directly to task segments associated with their current physical location. A user study with 19 participants found that 89.5% preferred the location-based interface, reporting reduced mental and physical demand compared to conventional linear playback.",
+  "badges": ["AR", "Task Recording", "Location-Based", "Non-linear Playback"],
+  "published": true,
+  "doi": "10.1109/VRW62533.2025.00249",
+  "venue": "IEEE VR 2026 Workshop"
+  },
+  {
     "year": "2024–2025",
     "title": "Focus-Aware AR Guidance: Adaptive Playback via Gaze and Location",
     "description": "This project explores how AR guidance can dynamically adapt to user attention using gaze and spatial context. By detecting whether users are engaged, distracted, or lost, the system adjusts playback speed or pauses automatically. Results show that adaptive guidance improves task accuracy and reduces manual control compared to static playback. The work highlights how minimal, well-chosen signals can outperform more complex multi-modal combinations.",
