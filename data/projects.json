@@ -13,7 +13,7 @@
     "description": "This project introduces STAGE, a system that transforms expert AR recordings into structured, replayable task guidance using a Directed Acyclic Graph (DAG). Instead of linear video playback, it segments multimodal data (video, gaze, motion) into meaningful task units and models their dependencies. The system enables users to navigate tasks non-linearly while respecting procedural constraints. It aims to support flexible, real-world workflows where strict step-by-step sequences are insufficient.",
     "badges": ["AR", "Task Guidance", "DAG", "Multimodal", "Spatial Computing", "Non-linear Workflow"],
     "published": true,
-    "venue": "ACM CHI 2025",
+    "venue": "ACM CHI 2026",
     "doi": "10.1145/3772363.3798430"
   },
   {
