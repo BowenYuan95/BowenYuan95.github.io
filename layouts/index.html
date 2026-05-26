@@ -13,27 +13,29 @@
 
       <div class="hero-tags">
         {{ range .Site.Data.tags }}
-        {{ $tag := lower . }}
-        {{ $class := "badge-xr" }}
+          {{ $tag := lower . }}
+          {{ $class := "badge-xr" }}
 
-        {{ if or (in $tag "ai") (in $tag "llm") (in $tag "data") (in $tag "model") }}
-          {{ $class = "badge-ai" }}
-        {{ else if or (in $tag "publication") (in $tag "paper") (in $tag "academic") }}
-          {{ $class = "badge-pub" }}
-        {{ else if or (in $tag "human") (in $tag "hci") (in $tag "collaboration") (in $tag "interaction") }}
-          {{ $class = "badge-human" }}
-        {{ else if or (in $tag "phd") (in $tag "teaching") (in $tag "research") }}
-          {{ $class = "badge-status" }}
-        {{ else if or (in $tag "ar") (in $tag "xr") (in $tag "mr") (in $tag "spatial") }}
-          {{ $class = "badge-xr" }}
-        {{ end }}
+          {{ if or (in $tag "ai") (in $tag "llm") (in $tag "data") (in $tag "model") }}
+            {{ $class = "badge-ai" }}
+          {{ else if or (in $tag "publication") (in $tag "paper") (in $tag "academic") }}
+            {{ $class = "badge-pub" }}
+          {{ else if or (in $tag "human") (in $tag "hci") (in $tag "collaboration") (in $tag "interaction") }}
+            {{ $class = "badge-human" }}
+          {{ else if or (in $tag "phd") (in $tag "teaching") (in $tag "research") }}
+            {{ $class = "badge-status" }}
+          {{ else if or (in $tag "ar") (in $tag "xr") (in $tag "mr") (in $tag "spatial") }}
+            {{ $class = "badge-xr" }}
+          {{ end }}
 
-        <span class="tag {{ $class }}">{{ . }}</span>
+          <span class="tag {{ $class }}">{{ . }}</span>
         {{ end }}
       </div>
 
       <div class="hero-links">
-        <a href="{{ $params.cv_file }}" class="btn-primary" target="_blank" rel="noopener noreferrer">Download CV</a>
+        <a href="{{ $params.cv_file }}" class="btn-primary" target="_blank" rel="noopener noreferrer">
+          Download CV
+        </a>
         <a href="#contact" class="btn-ghost">Get in touch</a>
       </div>
     </div>
@@ -54,62 +56,38 @@
 
   <div class="project-list">
     {{ range .Site.Data.projects }}
+      <div class="project-item project-{{ .type }}">
+        <div class="project-meta">
+          <div class="project-year">{{ .year }}</div>
 
-    {{ $projectText := lower (printf "%s %s %s" .title .description (delimit .badges " ")) }}
-    {{ $projectClass := "project-xr" }}
+          {{ if .published }}
+            <span class="pub-status published">Published</span>
+          {{ else }}
+            <span class="pub-status unpublished">Unpublished</span>
+          {{ end }}
+        </div>
 
-    {{ if or (in $projectText "ai") (in $projectText "llm") (in $projectText "model") (in $projectText "data") (in $projectText "gaze tracking") }}
-      {{ $projectClass = "project-ai" }}
-    {{ else if or (in $projectText "collaboration") (in $projectText "meeting") (in $projectText "human") (in $projectText "hci") }}
-      {{ $projectClass = "project-human" }}
-    {{ else if or (in $projectText "publication") (in $projectText "paper") (in $projectText "ismar") (in $projectText "chi") (in $projectText "ieee") }}
-      {{ $projectClass = "project-pub" }}
-    {{ else if or (in $projectText "ar") (in $projectText "xr") (in $projectText "mr") (in $projectText "spatial") (in $projectText "task guidance") }}
-      {{ $projectClass = "project-xr" }}
-    {{ end }}
+        <div class="project-title">{{ .title }}</div>
+        <div class="project-desc">{{ .description }}</div>
 
-    <div class="project-item {{ $projectClass }}">
-      <div class="project-year">{{ .year }}</div>
-      <div class="project-title">{{ .title }}</div>
-      <div class="project-desc">{{ .description }}</div>
+        <div class="project-badges">
+          {{ range .badges }}
+            <span class="project-badge badge-{{ .type }}">{{ .label }}</span>
+          {{ end }}
+        </div>
 
-      <div class="project-badges">
-        {{ range .badges }}
-        {{ $badge := lower . }}
-        {{ $badgeClass := "badge-xr" }}
-
-        {{ if or (in $badge "ai") (in $badge "llm") (in $badge "model") (in $badge "data") (in $badge "gaze") }}
-          {{ $badgeClass = "badge-ai" }}
-        {{ else if or (in $badge "ismar") (in $badge "chi") (in $badge "ieee") (in $badge "publication") (in $badge "paper") }}
-          {{ $badgeClass = "badge-pub" }}
-        {{ else if or (in $badge "human") (in $badge "hci") (in $badge "interaction") (in $badge "collaboration") }}
-          {{ $badgeClass = "badge-human" }}
-        {{ else if or (in $badge "ongoing") (in $badge "prototype") (in $badge "teaching") (in $badge "phd") }}
-          {{ $badgeClass = "badge-status" }}
-        {{ else if or (in $badge "ar") (in $badge "xr") (in $badge "mr") (in $badge "spatial") (in $badge "guidance") }}
-          {{ $badgeClass = "badge-xr" }}
-        {{ end }}
-
-        <span class="project-badge {{ $badgeClass }}">{{ . }}</span>
+        {{ if .published }}
+          <div class="project-pub-row">
+            {{ if .doi }}
+              <a href="https://doi.org/{{ .doi }}" class="pub-venue" target="_blank" rel="noopener noreferrer">
+                {{ .venue }}
+              </a>
+            {{ else if .venue }}
+              <span class="pub-venue">{{ .venue }}</span>
+            {{ end }}
+          </div>
         {{ end }}
       </div>
-
-      {{ if .published }}
-      <div class="project-pub-row">
-        <span class="pub-status published">Published</span>
-        {{ if .doi }}
-        <a href="https://doi.org/{{ .doi }}" class="pub-venue" target="_blank" rel="noopener noreferrer">{{ .venue }}</a>
-        {{ else if .venue }}
-        <span class="pub-venue">{{ .venue }}</span>
-        {{ end }}
-      </div>
-      {{ else }}
-      <div class="project-pub-row">
-        <span class="pub-status unpublished">Unpublished</span>
-      </div>
-      {{ end }}
-    </div>
-
     {{ end }}
   </div>
 </section>
@@ -160,14 +138,18 @@
     <div class="contact-item contact-code">
       <div class="contact-type">GITHUB</div>
       <div class="contact-val">
-        <a href="https://{{ $params.github }}" target="_blank" rel="noopener noreferrer">{{ $params.github }}</a>
+        <a href="https://{{ $params.github }}" target="_blank" rel="noopener noreferrer">
+          {{ $params.github }}
+        </a>
       </div>
     </div>
 
     <div class="contact-item contact-publication">
       <div class="contact-type">GOOGLE SCHOLAR</div>
       <div class="contact-val">
-        <a href="https://{{ $params.scholar }}" target="_blank" rel="noopener noreferrer">scholar.google.com</a>
+        <a href="https://{{ $params.scholar }}" target="_blank" rel="noopener noreferrer">
+          scholar.google.com
+        </a>
       </div>
     </div>
   </div>

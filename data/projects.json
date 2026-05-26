@@ -1,56 +1,97 @@
 [
   {
     "year": "Ongoing",
+    "type": "human",
     "title": "Gaze-Adaptive Diminished Reality for Attention Management",
     "description": "This project examines how Diminished Reality (DR) can be used to manage visual attention in AR by selectively reducing irrelevant information. Two approaches are explored: binary visibility and multi-level transparency based on gaze behavior. The system dynamically modulates scene visibility to guide attention without fully removing context. This work contributes to understanding how subtle visual suppression can improve focus in complex environments.",
-    "badges": ["Diminished Reality", "Attention Management", "Transparency Control", "Gaze-Adaptive", "AR Visualization"],
+    "badges": [
+      { "label": "Diminished Reality", "type": "xr" },
+      { "label": "Attention Management", "type": "human" },
+      { "label": "Transparency Control", "type": "xr" },
+      { "label": "Gaze-Adaptive", "type": "ai" },
+      { "label": "AR Visualization", "type": "xr" }
+    ],
     "published": false,
     "doi": ""
   },
   {
     "year": "2024–2025",
+    "type": "xr",
     "title": "STAGE: Non-Linear AR Task Guidance via Dependency Modeling",
     "description": "This project introduces STAGE, a system that transforms expert AR recordings into structured, replayable task guidance using a Directed Acyclic Graph (DAG). Instead of linear video playback, it segments multimodal data (video, gaze, motion) into meaningful task units and models their dependencies. The system enables users to navigate tasks non-linearly while respecting procedural constraints. It aims to support flexible, real-world workflows where strict step-by-step sequences are insufficient.",
-    "badges": ["AR", "Task Guidance", "DAG", "Multimodal", "Spatial Computing", "Non-linear Workflow"],
+    "badges": [
+      { "label": "AR", "type": "xr" },
+      { "label": "Task Guidance", "type": "xr" },
+      { "label": "DAG", "type": "ai" },
+      { "label": "Multimodal", "type": "ai" },
+      { "label": "Spatial Computing", "type": "xr" },
+      { "label": "Non-linear Workflow", "type": "status" }
+    ],
     "published": true,
     "venue": "ACM CHI 2026",
     "doi": "10.1145/3772363.3798430"
   },
   {
-  "year": "2024–2025",
-  "title": "Location-based Non-linear Playback of AR Task Recording",
-  "description": "This project investigates a non-linear replay approach that automatically segments AR task recordings based on spatial location data. Instead of manual timeline scrubbing, the system enables reviewers to jump directly to task segments associated with their current physical location. A user study with 19 participants found that 89.5% preferred the location-based interface, reporting reduced mental and physical demand compared to conventional linear playback.",
-  "badges": ["AR", "Task Recording", "Location-Based", "Non-linear Playback"],
-  "published": true,
-  "doi": "10.1109/VRW70859.2026.00181",
-  "venue": "IEEE VR 2026"
+    "year": "2024–2025",
+    "type": "xr",
+    "title": "Location-based Non-linear Playback of AR Task Recording",
+    "description": "This project investigates a non-linear replay approach that automatically segments AR task recordings based on spatial location data. Instead of manual timeline scrubbing, the system enables reviewers to jump directly to task segments associated with their current physical location. A user study with 19 participants found that 89.5% preferred the location-based interface, reporting reduced mental and physical demand compared to conventional linear playback.",
+    "badges": [
+      { "label": "AR", "type": "xr" },
+      { "label": "Task Recording", "type": "xr" },
+      { "label": "Location-Based", "type": "xr" },
+      { "label": "Non-linear Playback", "type": "status" }
+    ],
+    "published": true,
+    "doi": "10.1109/VRW70859.2026.00181",
+    "venue": "IEEE VR 2026"
   },
   {
     "year": "2024–2025",
+    "type": "human",
     "title": "Focus-Aware AR Guidance: Adaptive Playback via Gaze and Location",
     "description": "This project explores how AR guidance can dynamically adapt to user attention using gaze and spatial context. By detecting whether users are engaged, distracted, or lost, the system adjusts playback speed or pauses automatically. Results show that adaptive guidance improves task accuracy and reduces manual control compared to static playback. The work highlights how minimal, well-chosen signals can outperform more complex multi-modal combinations.",
-    "badges": ["AR", "Focus Awareness", "Adaptive Interface", "Gaze Tracking", "Attention Modeling"],
+    "badges": [
+      { "label": "AR", "type": "xr" },
+      { "label": "Focus Awareness", "type": "human" },
+      { "label": "Adaptive Interface", "type": "human" },
+      { "label": "Gaze Tracking", "type": "ai" },
+      { "label": "Attention Modeling", "type": "ai" }
+    ],
     "published": true,
     "doi": "10.1109/ISMAR67309.2025.00103",
     "venue": "IEEE ISMAR 2025"
   },
   {
-    "year": "2023-2024",
+    "year": "2023–2024",
+    "type": "xr",
     "title": "Spatial Guidance Cues in AR: Line vs. Radar Navigation",
     "description": "This project investigates how different visual guidance cues affect user navigation in AR environments. Comparing line-based and radar-based cues, the study finds that egocentric line guidance significantly improves efficiency, reduces head movement, and enhances spatial orientation. Radar cues, while informative, introduce additional cognitive load when mapping 2D representations to 3D space. The findings emphasize the importance of intuitive, embodied visual design in AR systems.",
-    "badges": ["AR Navigation", "Spatial Cues", "Visual Design", "Embodied Interaction", "User Experience"],
+    "badges": [
+      { "label": "AR Navigation", "type": "xr" },
+      { "label": "Spatial Cues", "type": "xr" },
+      { "label": "Visual Design", "type": "human" },
+      { "label": "Embodied Interaction", "type": "human" },
+      { "label": "User Experience", "type": "human" }
+    ],
     "published": true,
     "doi": "10.1145/3703619.3706047",
     "venue": "ACM VRCAI 2024"
   },
-
   {
-  "year": "2023",
-  "title": "The Fusion Nexus: Biocognitive Audio-Verbal Interface in Asymmetric XR Collaboration",
-  "description": "FusionNexus is an asymmetric collaboration experience where a VR player guides a real-world player through pose-based tasks. A machine learning model performs real-time pose detection, while the VR player's heartbeat — captured via a Shimmer PPG sensor — controls drum beat tempo in background music, conveying emotional and physical state across realities. The two players collaborate to complete a timed challenge under immersive pressure.",
-  "badges": ["XR", "Asymmetric Collaboration", "HRV", "Pose Detection", "Cross Reality"],
-  "published": true,
-  "doi": "10.1145/3610549.3614594",
-  "venue": "SIGGRAPH Asia 2023 XR"
-  } 
+    "year": "2023",
+    "type": "human",
+    "title": "The Fusion Nexus: Biocognitive Audio-Verbal Interface in Asymmetric XR Collaboration",
+    "description": "FusionNexus is an asymmetric collaboration experience where a VR player guides a real-world player through pose-based tasks. A machine learning model performs real-time pose detection, while the VR player's heartbeat — captured via a Shimmer PPG sensor — controls drum beat tempo in background music, conveying emotional and physical state across realities. The two players collaborate to complete a timed challenge under immersive pressure.",
+    "badges": [
+      { "label": "XR", "type": "xr" },
+      { "label": "Asymmetric Collaboration", "type": "human" },
+      { "label": "HRV", "type": "human" },
+      { "label": "Pose Detection", "type": "ai" },
+      { "label": "Cross Reality", "type": "xr" }
+    ],
+    "published": true,
+    "doi": "10.1145/3610549.3614594",
+    "venue": "SIGGRAPH Asia 2023 XR"
+  }
 ]

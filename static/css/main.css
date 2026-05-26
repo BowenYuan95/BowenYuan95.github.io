@@ -281,7 +281,7 @@ nav {
   border: 1px solid var(--human-border);
 }
 
-/* fallback badge colour */
+/* Fallback badge colour */
 .tag:not(.badge-xr):not(.badge-ai):not(.badge-pub):not(.badge-status):not(.badge-human),
 .project-badge:not(.badge-xr):not(.badge-ai):not(.badge-pub):not(.badge-status):not(.badge-human) {
   color: var(--fg2);
@@ -289,6 +289,7 @@ nav {
   border: 1px solid var(--border);
 }
 
+/* ── Buttons ─────────────────────────────────────── */
 .hero-links {
   display: flex;
   gap: 1rem;
@@ -409,6 +410,15 @@ section {
   opacity: 1;
 }
 
+.project-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.45rem;
+  flex-wrap: wrap;
+}
+
 /* Project semantic categories */
 .project-xr::before {
   background: var(--xr);
@@ -428,15 +438,6 @@ section {
   background: var(--ai-soft);
 }
 
-.project-pub::before {
-  background: var(--pub);
-}
-
-.project-pub:hover {
-  border-color: var(--pub-border);
-  background: var(--pub-soft);
-}
-
 .project-human::before {
   background: var(--human);
 }
@@ -446,12 +447,31 @@ section {
   background: var(--human-soft);
 }
 
+.project-pub::before,
+.project-publication::before {
+  background: var(--pub);
+}
+
+.project-pub:hover,
+.project-publication:hover {
+  border-color: var(--pub-border);
+  background: var(--pub-soft);
+}
+
+.project-status::before {
+  background: var(--status);
+}
+
+.project-status:hover {
+  border-color: var(--status-border);
+  background: var(--status-soft);
+}
+
 .project-year {
   font-family: var(--mono);
   font-size: 11px;
   font-weight: 700;
   color: var(--status);
-  margin-bottom: 0.35rem;
 }
 
 .project-title {
@@ -479,19 +499,11 @@ section {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-top: 0.75rem;
+  margin-top: 0.85rem;
   flex-wrap: wrap;
 }
 
-/* keep old class name working */
-.project-pub {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-top: 0.75rem;
-  flex-wrap: wrap;
-}
-
+/* ── Publication Status ──────────────────────────── */
 .pub-status {
   font-family: var(--mono);
   font-size: 10px;
@@ -592,18 +604,52 @@ section {
 
 .contact-item:hover {
   transform: translateY(-2px);
+}
+
+/* Contact semantic colours */
+.contact-email:hover {
   border-color: var(--human-border);
   background: var(--human-soft);
+}
+
+.contact-institution:hover {
+  border-color: var(--xr-border);
+  background: var(--xr-soft);
+}
+
+.contact-code:hover {
+  border-color: var(--ai-border);
+  background: var(--ai-soft);
+}
+
+.contact-publication:hover {
+  border-color: var(--pub-border);
+  background: var(--pub-soft);
 }
 
 .contact-type {
   font-family: var(--mono);
   font-size: 10px;
   font-weight: 700;
-  color: var(--human);
   letter-spacing: 0.08em;
   margin-bottom: 0.5rem;
   text-transform: uppercase;
+}
+
+.contact-email .contact-type {
+  color: var(--human);
+}
+
+.contact-institution .contact-type {
+  color: var(--xr);
+}
+
+.contact-code .contact-type {
+  color: var(--ai);
+}
+
+.contact-publication .contact-type {
+  color: var(--pub);
 }
 
 .contact-val {
@@ -612,8 +658,19 @@ section {
 }
 
 .contact-val a:hover {
-  color: var(--human);
   opacity: 1;
+}
+
+.contact-email .contact-val a:hover {
+  color: var(--human);
+}
+
+.contact-code .contact-val a:hover {
+  color: var(--ai);
+}
+
+.contact-publication .contact-val a:hover {
+  color: var(--pub);
 }
 
 /* ── Footer ──────────────────────────────────────── */
@@ -701,6 +758,10 @@ footer {
 
   .project-title {
     font-size: 18.5px;
+  }
+
+  .project-meta {
+    align-items: flex-start;
   }
 
   .cv-section {
