@@ -7,6 +7,7 @@
 
 :root {
   --serif: 'EB Garamond', Georgia, serif;
+  --display: 'Outfit', Arial, sans-serif;
   --mono: 'DM Mono', 'Courier New', monospace;
 
   --fg: #171717;
@@ -210,17 +211,18 @@ nav {
 }
 
 .hero h1 {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: clamp(38px, 5.8vw, 56px);
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1.08;
   margin-bottom: 1.5rem;
-  letter-spacing: -0.03em;
+  letter-spacing: 0;
   color: var(--fg);
 }
 
 .hero h1 em {
-  font-style: italic;
+  font-style: normal;
+  font-weight: 400;
   color: var(--xr);
 }
 
