@@ -132,7 +132,11 @@
 
     <div class="contact-item contact-institution">
       <div class="contact-type">INSTITUTION</div>
-      <div class="contact-val">{{ $params.institution }}</div>
+      <div class="contact-val">
+        <a href="{{ $params.institution_url }}" target="_blank" rel="noopener noreferrer">
+          {{ $params.institution }}
+        </a>
+      </div>
     </div>
 
     <div class="contact-item contact-code">
