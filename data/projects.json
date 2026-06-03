@@ -2,14 +2,29 @@
   {
     "year": "Ongoing",
     "type": "human",
+    "title": "Facilitating Discussions in Immersive Virtual Meetings with Virtual Agents",
+    "description": "This project investigates how proactive virtual agents can support collaboration in immersive virtual meetings. The system uses a cloud-based LLM service to track meeting agendas, transcripts, time remaining, and participant talk time, then provides timely facilitation such as introducing agendas, keeping time, encouraging quieter participants, and summarising discussion. A user study comparing passive and active agent behaviours suggests proactive facilitation can improve discussion support, while also requiring more nuanced timing to avoid distraction.",
+    "badges": [
+      { "label": "Virtual Meetings", "type": "xr" },
+      { "label": "Virtual Agents", "type": "ai" },
+      { "label": "LLM", "type": "ai" },
+      { "label": "VR Collaboration", "type": "xr" },
+      { "label": "Speech Interaction", "type": "human" }
+    ],
+    "published": true,
+    "doi": "10.1109/VRW70859.2026.00187"
+  },
+  {
+    "year": "Ongoing",
+    "type": "human",
     "title": "Gaze-Adaptive Diminished Reality for Attention Management",
     "description": "This project examines how Diminished Reality (DR) can be used to manage visual attention in AR by selectively reducing irrelevant information. Two approaches are explored: binary visibility and multi-level transparency based on gaze behavior. The system dynamically modulates scene visibility to guide attention without fully removing context. This work contributes to understanding how subtle visual suppression can improve focus in complex environments.",
     "badges": [
-      { "label": "Diminished Reality", "type": "xr" },
-      { "label": "Attention Management", "type": "human" },
-      { "label": "Transparency Control", "type": "xr" },
-      { "label": "Gaze-Adaptive", "type": "ai" },
-      { "label": "AR Visualization", "type": "xr" }
+      { "label": "Diminished Reality", "type": "XR" },
+      { "label": "Attention Management", "type": "Human" },
+      { "label": "Transparency Control", "type": "XR" },
+      { "label": "Gaze-Adaptive", "type": "AI" },
+      { "label": "AR Visualization", "type": "XR" }
     ],
     "published": false,
     "doi": ""
