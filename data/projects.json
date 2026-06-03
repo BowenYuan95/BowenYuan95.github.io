@@ -1,6 +1,6 @@
 [
   {
-  "year": "2026",
+  "year": "Ongoing",
   "type": "ai",
   "title": "Adaptive Avatar Agents for Context-Aware VR Collaboration",
   "description": "This project explores how AI-driven avatar agents can support attention guidance, task review, and collaboration in immersive VR environments. The system records user behaviour during VR tasks, including head position, head direction, hand interaction, grabbed objects, voice, and task duration, then uses speech-to-text, vision-language models, and text embeddings to help the agent review and respond to user activity. A key focus is adaptive avatar embodiment: the agent can transform between different avatar types, such as humans, robots, animals, fish, birds, and animated objects, based on conversation context, task state, environmental events, and possible biological signals. The project aims to investigate how avatar diversity, transformation, and environment-aware behaviour can make AI agents more expressive, noticeable, and useful in VR task guidance and collaborative scenarios.",
