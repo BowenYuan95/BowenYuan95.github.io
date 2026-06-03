@@ -20,11 +20,11 @@
     "title": "Gaze-Adaptive Diminished Reality for Attention Management",
     "description": "This project examines how Diminished Reality (DR) can be used to manage visual attention in AR by selectively reducing irrelevant information. Two approaches are explored: binary visibility and multi-level transparency based on gaze behavior. The system dynamically modulates scene visibility to guide attention without fully removing context. This work contributes to understanding how subtle visual suppression can improve focus in complex environments.",
     "badges": [
-      { "label": "Diminished Reality", "type": "XR" },
-      { "label": "Attention Management", "type": "Human" },
-      { "label": "Transparency Control", "type": "XR" },
-      { "label": "Gaze-Adaptive", "type": "AI" },
-      { "label": "AR Visualization", "type": "XR" }
+      { "label": "Diminished Reality", "type": "xr" },
+      { "label": "Attention Management", "type": "human" },
+      { "label": "Transparency Control", "type": "xr" },
+      { "label": "Gaze-Adaptive", "type": "ai" },
+      { "label": "AR Visualization", "type": "xr" }
     ],
     "published": false,
     "doi": ""
