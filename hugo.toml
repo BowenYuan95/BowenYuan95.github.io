@@ -5,6 +5,7 @@ title = "Bowen Yuan"
 [params]
   name = "Bowen Yuan"
   role = "PhD Candidate"
+  browser_title = "Bowen Yuan - Researcher & Developer"
   institution = "Adelaide University (AU)"
   institution_url = "https://empathiccomputing.org/team/bowen-yuan/"
   bio = "I am Bowen Yuan, a PhD candidate in Computer Science at the Adelaide University, working at the intersection of Human–Computer Interaction, Augmented Reality, and AI. My research focuses on transforming expert demonstrations into adaptive, spatially grounded AR task guidance using multimodal signals such as gaze and motion, with publications in ACM CHI, IEEE VR, and ISMAR, and a broader goal of building intelligent systems that make complex real-world tasks more intuitive and efficient."
