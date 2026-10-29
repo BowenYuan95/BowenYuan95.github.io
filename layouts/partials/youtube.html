@@ -1,0 +1,48 @@
+{{- /*
+  Responsive, privacy-enhanced YouTube embed.
+
+  Usage:
+    {{ partial "youtube.html" "https://youtu.be/VIDEO_ID" }}
+    {{ partial "youtube.html" (dict "url" "https://youtu.be/VIDEO_ID" "title" "Demo video" "caption" "Optional caption") }}
+
+  Accepts a full YouTube URL (watch, youtu.be, shorts, live, embed) or a bare ID.
+  Uses youtube-nocookie.com and lazy-loads the iframe.
+*/ -}}
+{{- $url := "" -}}
+{{- $id := "" -}}
+{{- $title := "YouTube video" -}}
+{{- $caption := "" -}}
+
+{{- if reflect.IsMap . -}}
+  {{- $url = .url | default (.id | default "") -}}
+  {{- $title = .title | default $title -}}
+  {{- $caption = .caption | default "" -}}
+{{- else -}}
+  {{- $url = . | default "" -}}
+{{- end -}}
+
+{{- if findRE `^[A-Za-z0-9_-]{11}$` $url -}}
+  {{- $id = $url -}}
+{{- else -}}
+  {{- $match := findRESubmatch `(?:youtu\.be/|youtube(?:-nocookie)?\.com/(?:watch\?(?:[^#]*&)?v=|embed/|shorts/|live/|v/))([A-Za-z0-9_-]{11})` $url 1 -}}
+  {{- with $match -}}
+    {{- $id = index (index . 0) 1 -}}
+  {{- end -}}
+{{- end -}}
+
+{{- with $id -}}
+<div class="project-video">
+  <div class="video-frame">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/{{ . }}"
+      title="{{ $title }}"
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
+  </div>
+  {{- with $caption }}
+  <div class="video-caption">{{ . }}</div>
+  {{- end }}
+</div>
+{{- end -}}

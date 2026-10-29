@@ -87,6 +87,10 @@
             {{ end }}
           </div>
         {{ end }}
+
+        {{ if .video }}
+          {{ partial "youtube.html" (dict "url" .video "title" .title "caption" .video_caption) }}
+        {{ end }}
       </div>
     {{ end }}
   </div>
