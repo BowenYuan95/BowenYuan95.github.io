@@ -1,0 +1,48 @@
+{{- /*
+  Normalise a project's publication records into a list.
+
+  Input: a project map from data/projects.json.
+  Returns: a slice of publication maps (possibly empty).
+
+  Schema, in order of precedence:
+
+  1. `publications`: [ {...}, {...} ]  — one project, several papers.
+  2. `publication`:  {...}             — the original single-paper schema,
+                                          still fully supported so existing
+                                          entries keep rendering unchanged.
+  3. Top-level `venue` / `doi` / ...   — legacy flat schema, accepted as a
+                                          last resort so older data files do
+                                          not break.
+
+  Only the shape is normalised here; templates stay responsible for copy,
+  status wording and links.
+*/ -}}
+{{- $project := . -}}
+{{- $pubs := slice -}}
+
+{{- with $project.publications -}}
+  {{- range . -}}
+    {{- if . -}}
+      {{- $pubs = $pubs | append . -}}
+    {{- end -}}
+  {{- end -}}
+{{- else -}}
+  {{- with $project.publication -}}
+    {{- $pubs = $pubs | append . -}}
+  {{- else -}}
+    {{- if $project.venue -}}
+      {{- $legacy := dict "venue" $project.venue -}}
+      {{- range $key := slice "venue_detail" "type" "status" "doi" "pages" "authors" -}}
+        {{- with index $project $key -}}
+          {{- $legacy = merge $legacy (dict $key .) -}}
+        {{- end -}}
+      {{- end -}}
+      {{- with $project.publication_year -}}
+        {{- $legacy = merge $legacy (dict "year" .) -}}
+      {{- end -}}
+      {{- $pubs = $pubs | append $legacy -}}
+    {{- end -}}
+  {{- end -}}
+{{- end -}}
+
+{{- return $pubs -}}

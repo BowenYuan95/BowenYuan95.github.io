@@ -1,16 +1,30 @@
 {{- /*
   External / secondary action links for a research project.
   Input: a project map from data/projects.json.
+
+  `paper_url` still wins when present. Otherwise a single-publication project
+  gets the original "Paper" link; a multi-publication project gets one link per
+  DOI, labelled with its venue, so every DOI is reachable from the card.
 */ -}}
 {{- $project := . -}}
-{{- $pub := $project.publication -}}
+{{- $pubs := partial "project-publications.html" $project -}}
 {{- $paper := $project.paper_url -}}
-{{- if and (not $paper) $pub -}}
-  {{- with $pub.doi }}{{ $paper = printf "https://doi.org/%s" . }}{{ end -}}
-{{- end -}}
 <div class="project__actions">
   {{- with $paper }}
   <a class="link-arrow" href="{{ . }}" target="_blank" rel="noopener noreferrer">Paper{{ partial "icon.html" "external" }}</a>
+  {{- else -}}
+    {{- if eq (len $pubs) 1 -}}
+      {{- with (index $pubs 0).doi }}
+  <a class="link-arrow" href="https://doi.org/{{ . }}" target="_blank" rel="noopener noreferrer">Paper{{ partial "icon.html" "external" }}</a>
+      {{- end -}}
+    {{- else -}}
+      {{- range $pubs -}}
+        {{- $pub := . -}}
+        {{- with $pub.doi }}
+  <a class="link-arrow" href="https://doi.org/{{ . }}" title="DOI: {{ . }}" target="_blank" rel="noopener noreferrer">Paper ({{ $pub.venue }}){{ partial "icon.html" "external" }}</a>
+        {{- end -}}
+      {{- end -}}
+    {{- end -}}
   {{- end }}
   {{- with $project.youtube_id }}
   <a class="link-arrow" href="https://www.youtube.com/watch?v={{ . }}" target="_blank" rel="noopener noreferrer">Watch on YouTube{{ partial "icon.html" "external" }}</a>

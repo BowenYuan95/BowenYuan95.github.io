@@ -358,6 +358,10 @@ b {
    ========================================================================== */
 
 .hero {
+  /* Portrait is sized against the bio: one knob drives both the image and the
+     grid column that holds it. */
+  --portrait-size: 9rem; /* 144px */
+
   padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(2rem, 5vw, 3.5rem);
 }
 
@@ -387,8 +391,8 @@ b {
 }
 
 .hero__avatar {
-  width: 7rem; /* 112px */
-  height: 7rem;
+  width: var(--portrait-size);
+  height: var(--portrait-size);
   object-fit: cover;
   object-position: center 20%;
   border: 1px solid var(--border);
@@ -448,8 +452,12 @@ b {
 }
 
 @media (min-width: 768px) {
+  .hero {
+    --portrait-size: 13rem; /* 208px */
+  }
+
   .hero__inner {
-    grid-template-columns: minmax(0, 1fr) 10rem;
+    grid-template-columns: minmax(0, 1fr) var(--portrait-size);
     grid-template-areas: 'content portrait';
     column-gap: clamp(2rem, 4vw, 3.5rem);
     align-items: start;
@@ -459,21 +467,11 @@ b {
     justify-self: end;
     margin-top: 0.25rem;
   }
-
-  .hero__avatar {
-    width: 10rem; /* 160px */
-    height: 10rem;
-  }
 }
 
 @media (min-width: 1024px) {
-  .hero__inner {
-    grid-template-columns: minmax(0, 1fr) 11rem;
-  }
-
-  .hero__avatar {
-    width: 11rem; /* 176px */
-    height: 11rem;
+  .hero {
+    --portrait-size: 15rem; /* 240px */
   }
 }
 

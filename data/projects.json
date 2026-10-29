@@ -9,23 +9,39 @@
     "featured_order": 1,
     "sort_order": 0,
     "publication_year": 2026,
-    "publication": {
-      "title": "Dependency-Aware AR Guidance for Replaying Non-Linear Work",
-      "venue": "ACM CHI 2026",
-      "venue_detail": "Extended Abstracts",
-      "type": "Extended abstract",
-      "status": "Published",
-      "year": 2026,
-      "doi": "10.1145/3772363.3798430",
-      "pages": "1-5",
-      "authors": [
-        "Bowen Yuan",
-        "Zirui Xiao",
-        "Hyunwoo Cho",
-        "Mark Billinghurst",
-        "Gun A. Lee"
-      ]
-    },
+    "publications": [
+      {
+        "title": "Dependency-Aware AR Guidance for Replaying Non-Linear Work",
+        "venue": "ACM CHI 2026",
+        "venue_detail": "Extended Abstracts",
+        "type": "Extended abstract",
+        "status": "Published",
+        "year": 2026,
+        "doi": "10.1145/3772363.3798430",
+        "pages": "1-5",
+        "authors": [
+          "Bowen Yuan",
+          "Zirui Xiao",
+          "Hyunwoo Cho",
+          "Mark Billinghurst",
+          "Gun A. Lee"
+        ]
+      },
+      {
+        "venue": "ACM OzCHI 2026",
+        "venue_detail": "38th Australasian Conference on Human-Computer Interaction",
+        "type": "Conference paper",
+        "status": "Accepted",
+        "year": 2026,
+        "doi": "10.1145/3847401.3847407",
+        "conference_dates": "November 21–25, 2026",
+        "location": "Adelaide, Australia",
+        "isbn": "979-8-4007-2724-5/2026/11",
+        "license": "CC BY",
+        "pages": "",
+        "authors": []
+      }
+    ],
     "summary": "STAGE converts expert AR recordings into a dependency graph of task segments, letting users replay procedural work non-linearly while respecting the constraints that link steps. The system segments multimodal video, gaze, and motion data into meaningful units and models their dependencies as a directed acyclic graph, supporting flexible workflows where strict step-by-step sequences are insufficient.",
     "full_description": "This project introduces STAGE, a system that transforms expert AR recordings into structured, replayable task guidance using a Directed Acyclic Graph (DAG). Instead of linear video playback, it segments multimodal data (video, gaze, motion) into meaningful task units and models their dependencies. The system enables users to navigate tasks non-linearly while respecting procedural constraints. It aims to support flexible, real-world workflows where strict step-by-step sequences are insufficient.",
     "key_result": "Models task steps and their dependencies as a DAG so guidance can be replayed non-linearly.",
