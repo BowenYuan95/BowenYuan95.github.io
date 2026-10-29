@@ -10,6 +10,7 @@
 */ -}}
 {{- $project := .project -}}
 {{- $pub := .pub -}}
+{{- $first := .first -}}
 {{- $self := site.Params.name -}}
 {{- $title := $pub.title | default "" -}}
 <li class="publication">
@@ -75,11 +76,11 @@
       {{- with $pub.license }}
       <span class="publication__note">{{ . }} licence</span>
       {{- end }}
-      {{- if $project.youtube_id }}
+      {{- if and $first $project.youtube_id }}
       <a class="link-arrow" href="https://www.youtube.com/watch?v={{ $project.youtube_id }}" target="_blank" rel="noopener noreferrer">Demo video{{ partial "icon.html" "external" }}</a>
       {{- end }}
-      {{- with $project.code_url }}
-      <a class="link-arrow" href="{{ . }}" target="_blank" rel="noopener noreferrer">Code{{ partial "icon.html" "external" }}</a>
+      {{- if and $first $project.code_url }}
+      <a class="link-arrow" href="{{ $project.code_url }}" target="_blank" rel="noopener noreferrer">Code{{ partial "icon.html" "external" }}</a>
       {{- end }}
     </div>
   </div>

@@ -156,3 +156,35 @@ Remaining overstated copy after the re-check (correctness only; each needs an ow
 - `layouts/index.html:78` — "Peer-reviewed papers and abstracts." covers two "XR program submission" records (`data/projects.json:188,300`). Suggested: "Peer-reviewed papers, workshop abstracts, and juried XR program submissions."
 - `layouts/_default/baseof.html:40` — JSON-LD `alumniOf` asserts the degree came from `Adelaide University`; Crossref supports a 2026 affiliation, not the degree. Suggested: omit `alumniOf` until §6.6 is confirmed.
 
+
+## 8. Update 2026-10-29 — STAGE second publication and multi-publication schema
+
+Scope: working tree after the `publications` refactor; the eight projects and all
+DOIs below were re-checked against Crossref / the owner's submitted metadata.
+
+| Item | Evidence (checked 2026-10-29) | Status |
+|---|---|---|
+| STAGE CHI 2026 record 10.1145/3772363.3798430 | Crossref title "Dependency-Aware AR Guidance for Replaying Non-Linear Work", CHI EA '26, pp. 1–5, 2026-04-13 — unchanged from §2 | VERIFIED |
+| STAGE OzCHI 2026 record 10.1145/3847401.3847407 | Owner-supplied: 38th Australasian Conference on Human-Computer Interaction, Adelaide, Australia, 21–25 Nov 2026, ISBN 979-8-4007-2724-5/2026/11, CC BY, status Accepted. Crossref `/works/10.1145/3847401.3847407` returns **HTTP 404**, and a headless-Chrome check through the system proxy (curl cannot reach doi.org from this host) returns `Error: DOI Not Found` for `https://doi.org/10.1145/3847401.3847407` | ACCEPTED (owner), UNVERIFIED externally — DOI does not resolve yet |
+| OzCHI paper title | Not supplied and not in Crossref — deliberately omitted from `data/projects.json`. The Publications list renders the project title with an explicit "(paper title to be announced)" note instead of reusing the CHI paper's title or inventing one | NOT INVENTED |
+| OzCHI authors / pages | Not supplied and not verifiable; `authors: []` and `pages: ""` omit them rather than guess | NOT INVENTED |
+| Multi-publication data shape | STAGE uses `publications: [...]`; the other seven projects keep the original single `publication` object. Rendering verified after `hugo --minify`: STAGE card shows "ACM CHI 2026 · Published" and "ACM OzCHI 2026 · Accepted" with one DOI link each; the Publications list went from 7 to 8 items with CHI first and OzCHI second | VERIFIED |
+| Backward compatibility | Single-`publication` projects render exactly as before (venue badge, status, one Paper link); a temporary legacy fixture using top-level `venue` / `doi` / `status` also built and rendered correctly (venue, status, DOI link) | VERIFIED |
+| DOI links | Both `https://doi.org/10.1145/3772363.3798430` and `https://doi.org/10.1145/3847401.3847407` are emitted as anchors in the STAGE card actions and in the Publications list; `hugo --minify` exits 0 with no template errors | VERIFIED |
+| DOI resolution (all records) | Headless Chrome via the system proxy (doi.org is blocked for curl here) 2026-10-29: `10.1145/3772363.3798430`, `10.1145/3703619.3706047`, `10.1145/3610549.3614594` → ACM Digital Library (Cloudflare challenge page); `10.1109/VRW70859.2026.00181` → IEEE Xplore document 11489744; `10.1109/VRW70859.2026.00103` → document 11220360; `10.1109/VRW70859.2026.00187` → document 11489662; **`10.1145/3847401.3847407` → "Error: DOI Not Found"** | 6 VERIFIED, OzCHI 2026 NOT RESOLVABLE (yet) |
+
+Status wording kept on the site: CHI 2026 = Published, OzCHI 2026 = Accepted.
+Flip the OzCHI record to `"status": "Published"`, add its verified title/authors
+and Crossref evidence only after the proceedings record exists.
+
+**Owner decision (2026-10-29):** publish the OzCHI 2026 record as supplied —
+`Accepted`, with its DOI link visible — because the paper is accepted and the
+DOI is expected to resolve once the OzCHI 2026 proceedings are registered (the
+conference runs 21–25 November 2026). Until then the link is expected to return
+"DOI Not Found"; re-check it when the proceedings appear. This is the only
+outbound link on the site that is currently known to be unresolvable.
+
+Layout check: headless Chrome renders the built page at 1440 px and at a true
+375 px viewport (iframe harness) with no horizontal overflow; the STAGE card
+meta wraps as venue + status per publication, with the conference name on the
+following line.

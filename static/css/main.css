@@ -360,7 +360,7 @@ b {
 .hero {
   /* Portrait is sized against the bio: one knob drives both the image and the
      grid column that holds it. */
-  --portrait-size: 9rem; /* 144px */
+  --portrait-size: 9.5rem; /* 152px */
 
   padding-block: clamp(2.5rem, 6vw, 4.5rem) clamp(2rem, 5vw, 3.5rem);
 }
@@ -465,13 +465,15 @@ b {
 
   .hero__portrait {
     justify-self: end;
-    margin-top: 0.25rem;
+    /* Drop the portrait so it is optically centred against the intro block
+       (eyebrow -> bio) instead of hanging from the eyebrow line. */
+    margin-top: calc(var(--portrait-size) * 0.15);
   }
 }
 
 @media (min-width: 1024px) {
   .hero {
-    --portrait-size: 15rem; /* 240px */
+    --portrait-size: 16rem; /* 256px */
   }
 }
 
@@ -802,6 +804,16 @@ b {
 .project__meta-item {
   display: inline-flex;
   align-items: center;
+}
+
+/* One publication record inside the card meta line. Keeping each record in its
+   own flex row means a multi-publication project wraps between venues rather
+   than splitting a badge or status from its venue. */
+.project__meta-pub {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .project__title {
@@ -1237,6 +1249,14 @@ b {
   margin: 0;
   font-size: var(--text-small);
   line-height: 1.55;
+  color: var(--muted);
+}
+
+/* Conference location / dates, shown only when the record carries them. */
+.publication__event {
+  margin: 0.25rem 0 0;
+  font-size: var(--text-meta);
+  line-height: 1.5;
   color: var(--muted);
 }
 

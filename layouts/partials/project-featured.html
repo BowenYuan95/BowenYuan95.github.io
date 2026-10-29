@@ -6,7 +6,6 @@
   information-right on desktop, so no information is duplicated per breakpoint.
 */ -}}
 {{- $project := .project -}}
-{{- $pub := $project.publication -}}
 {{- $hasMedia := or $project.youtube_id $project.thumbnail -}}
 <article class="project project--featured{{ if not $hasMedia }} project--wide{{ end }}">
   {{ partial "project-meta.html" $project }}

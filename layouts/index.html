@@ -3,7 +3,17 @@
 {{- $projects := hugo.Data.projects -}}
 {{- $featured := sort (where $projects "featured" true) "featured_order" -}}
 {{- $others := sort (where $projects "featured" "!=" true) "sort_order" -}}
-{{- $publications := sort (where $projects "publication_year" ">" 0) "publication_year" "desc" -}}
+
+{{- /* Flatten every project's publication records into list items. Projects are
+       ordered by year; a project's own records keep their data order, so STAGE
+       shows its CHI paper before its OzCHI paper. */ -}}
+{{- $publicationItems := slice -}}
+{{- range sort (where $projects "publication_year" ">" 0) "publication_year" "desc" -}}
+  {{- $project := . -}}
+  {{- range $i, $pub := partial "project-publications.html" $project -}}
+    {{- $publicationItems = $publicationItems | append (dict "project" $project "pub" $pub "first" (eq $i 0)) -}}
+  {{- end -}}
+{{- end -}}
 
 <!-- Hero -->
 <section class="hero">
@@ -79,7 +89,7 @@
     </header>
 
     <ol class="publication-list">
-      {{- range $publications }}
+      {{- range $publicationItems }}
         {{ partial "publication.html" . }}
       {{- end }}
     </ol>
