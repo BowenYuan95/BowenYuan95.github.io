@@ -188,3 +188,25 @@ Layout check: headless Chrome renders the built page at 1440 px and at a true
 375 px viewport (iframe harness) with no horizontal overflow; the STAGE card
 meta wraps as venue + status per publication, with the conference name on the
 following line.
+
+## 9. Update 2026-10-29 (later) — two owner-added demo videos from `origin/main`
+
+While the redesign branch was being prepared, `origin/main` advanced from
+`122f6f9` with two owner commits adding demo videos to project entries:
+
+| Commit | Project | Video ID added |
+|---|---|---|
+| `62d929d` "Add Spatial Guidance Cues demo video to project entry" | Spatial Guidance Cues in AR: Line vs. Radar Navigation | `EGBjBESJ4g8` |
+| `46b45d4` "Add Virtual Meetings facilitation demo video to project entry" | Facilitating Discussions in Immersive Virtual Meetings with Virtual Agents | `iqXHlYf_8VU` |
+
+Both IDs are carried into the `data/projects.json` schema of this branch, so no
+existing video was dropped by the redesign. The site now references **seven**
+videos: `z3Rj5BoVQQg` (STAGE), `GHvM5LKPyRk` (location playback),
+`vsfr6rmE0jI` (focus-aware), `EGBjBESJ4g8` (spatial guidance cues),
+`wSx3pSNgpcU` (avatar agents), `iqXHlYf_8VU` (virtual meetings),
+`9xms8jyQf1o` (Fusion Nexus).
+
+Status: mapping VERIFIED against the owner's commits and the previous data file;
+playback still UNVERIFIED externally because `youtube.com` cannot be reached
+from this host (curl exit 35/28). Re-check that each video is public or unlisted
+before publishing.
