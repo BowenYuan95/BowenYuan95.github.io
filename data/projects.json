@@ -12,8 +12,10 @@
     { "label": "Speech Interaction", "type": "human" },
     { "label": "Embodied Interaction", "type": "human" }
   ],
-  "published": false,
-  "doi": ""
+  "published": true,
+  "doi": "",
+  "venue": "SIGGRAPH Asia 2026",
+  "video": "https://youtu.be/wSx3pSNgpcU"
   },
   {
     "year": "2026-Ongoing",
