@@ -1,0 +1,6 @@
+{{- /* Tags for a project or research area. Input: slice of tag strings. */ -}}
+<ul class="tag-list">
+  {{- range . }}
+  <li><span class="tag">{{ . }}</span></li>
+  {{- end }}
+</ul>

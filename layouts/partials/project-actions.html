@@ -1,0 +1,24 @@
+{{- /*
+  External / secondary action links for a research project.
+  Input: a project map from data/projects.json.
+*/ -}}
+{{- $project := . -}}
+{{- $pub := $project.publication -}}
+{{- $paper := $project.paper_url -}}
+{{- if and (not $paper) $pub -}}
+  {{- with $pub.doi }}{{ $paper = printf "https://doi.org/%s" . }}{{ end -}}
+{{- end -}}
+<div class="project__actions">
+  {{- with $paper }}
+  <a class="link-arrow" href="{{ . }}" target="_blank" rel="noopener noreferrer">Paper{{ partial "icon.html" "external" }}</a>
+  {{- end }}
+  {{- with $project.youtube_id }}
+  <a class="link-arrow" href="https://www.youtube.com/watch?v={{ . }}" target="_blank" rel="noopener noreferrer">Watch on YouTube{{ partial "icon.html" "external" }}</a>
+  {{- end }}
+  {{- with $project.code_url }}
+  <a class="link-arrow" href="{{ . }}" target="_blank" rel="noopener noreferrer">Code{{ partial "icon.html" "external" }}</a>
+  {{- end }}
+  {{- with $project.project_url }}
+  <a class="link-arrow" href="{{ . }}" target="_blank" rel="noopener noreferrer">Project page{{ partial "icon.html" "external" }}</a>
+  {{- end }}
+</div>

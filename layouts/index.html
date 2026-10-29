@@ -1,166 +1,140 @@
 {{ define "main" }}
-{{ $params := .Site.Params }}
+{{- $params := site.Params -}}
+{{- $projects := hugo.Data.projects -}}
+{{- $featured := sort (where $projects "featured" true) "featured_order" -}}
+{{- $others := sort (where $projects "featured" "!=" true) "sort_order" -}}
+{{- $publications := sort (where $projects "publication_year" ">" 0) "publication_year" "desc" -}}
 
 <!-- Hero -->
 <section class="hero">
-  <div class="hero-top">
-    <div class="hero-text">
-      <div class="hero-label">{{ $params.institution }} &middot; {{ $params.role }}</div>
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <p class="hero__eyebrow">{{ $params.role }} | {{ $params.institution }}</p>
+      <h1 class="hero__title">{{ $params.name }}</h1>
+      <p class="hero__positioning">{{ $params.positioning }}</p>
+      <p class="hero__intro">{{ $params.bio }}</p>
 
-      <h1>{{ $params.name }}<br><em>Researcher &amp; Developer</em></h1>
-
-      <p class="hero-bio">{{ $params.bio }}</p>
-
-      <div class="hero-tags">
-        {{ range .Site.Data.tags }}
-          {{ $tag := lower . }}
-          {{ $class := "badge-xr" }}
-
-          {{ if or (in $tag "ai") (in $tag "llm") (in $tag "data") (in $tag "model") }}
-            {{ $class = "badge-ai" }}
-          {{ else if or (in $tag "publication") (in $tag "paper") (in $tag "academic") }}
-            {{ $class = "badge-pub" }}
-          {{ else if or (in $tag "human") (in $tag "hci") (in $tag "collaboration") (in $tag "interaction") }}
-            {{ $class = "badge-human" }}
-          {{ else if or (in $tag "phd") (in $tag "teaching") (in $tag "research") }}
-            {{ $class = "badge-status" }}
-          {{ else if or (in $tag "ar") (in $tag "xr") (in $tag "mr") (in $tag "spatial") }}
-            {{ $class = "badge-xr" }}
-          {{ end }}
-
-          <span class="tag {{ $class }}">{{ . }}</span>
-        {{ end }}
+      {{- with hugo.Data.tags }}
+      <div class="hero__tags">
+        {{ partial "tag-list.html" . }}
       </div>
+      {{- end }}
 
-      <div class="hero-links">
-        <a href="{{ $params.cv_file }}" class="btn-primary" target="_blank" rel="noopener noreferrer">
-          Download CV
+      <div class="hero__actions">
+        <a class="btn btn--primary" href="{{ $params.cv_file | relURL }}">
+          {{ partial "icon.html" "download" }} Download CV <span class="btn__hint">(PDF)</span>
         </a>
-        <a href="#contact" class="btn-ghost">Get in touch</a>
+        <a class="btn btn--secondary" href="mailto:{{ $params.email }}">Email me</a>
       </div>
     </div>
 
-    <div class="hero-avatar">
-      <img src="/images/avatar.jpeg" alt="{{ $params.name }}">
+    <div class="hero__portrait">
+      <img class="hero__avatar" src="{{ "images/avatar.jpeg" | relURL }}" alt="Portrait of {{ $params.name }}" width="512" height="512">
     </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<!-- Featured Research -->
+<section class="section" id="research" aria-labelledby="research-title">
+  <span id="projects" class="section__anchor" aria-hidden="true"></span>
+  <div class="container">
+    <header class="section__header">
+      <p class="section__eyebrow">01 — Featured Research</p>
+      <h2 class="section__title" id="research-title">Featured Research</h2>
+      <p class="section__lede">Four systems that turn expert demonstrations into adaptive, spatially grounded augmented-reality guidance for real-world physical tasks.</p>
+    </header>
 
-<!-- Projects -->
-<section id="projects">
-  <div class="section-header">
-    <span class="section-label">Selected Projects</span>
-  </div>
-
-  <div class="project-list">
-    {{ range .Site.Data.projects }}
-      <div class="project-item project-{{ .type }}">
-        <div class="project-meta">
-          <div class="project-year">{{ .year }}</div>
-
-          {{ if .published }}
-            <span class="pub-status published">Published</span>
-          {{ else }}
-            <span class="pub-status unpublished">Unpublished</span>
-          {{ end }}
-        </div>
-
-        <div class="project-title">{{ .title }}</div>
-        <div class="project-desc">{{ .description }}</div>
-
-        <div class="project-badges">
-          {{ range .badges }}
-            <span class="project-badge badge-{{ .type }}">{{ .label }}</span>
-          {{ end }}
-        </div>
-
-        {{ if .published }}
-          <div class="project-pub-row">
-            {{ if .doi }}
-              <a href="https://doi.org/{{ .doi }}" class="pub-venue" target="_blank" rel="noopener noreferrer">
-                {{ .venue }}
-              </a>
-            {{ else if .venue }}
-              <span class="pub-venue">{{ .venue }}</span>
-            {{ end }}
-          </div>
-        {{ end }}
-
-        {{ if .video }}
-          {{ partial "youtube.html" (dict "url" .video "title" .title "caption" .video_caption) }}
-        {{ end }}
-      </div>
-    {{ end }}
+    <div class="project-list">
+      {{- range $featured }}
+        {{ partial "project-featured.html" (dict "project" .) }}
+      {{- end }}
+    </div>
   </div>
 </section>
 
-<div class="divider"></div>
+<!-- Other Research -->
+<section class="section" id="other-research" aria-labelledby="other-research-title">
+  <div class="container">
+    <header class="section__header">
+      <p class="section__eyebrow">02 — Other Research</p>
+      <h2 class="section__title" id="other-research-title">Other Research</h2>
+      <p class="section__lede">Ongoing and earlier work on embodied agents, immersive collaboration, and attention-aware AR.</p>
+    </header>
 
-<!-- CV -->
-<section id="cv">
-  <div class="section-header">
-    <span class="section-label">Curriculum Vitae</span>
+    <div class="project-list--compact">
+      {{- range $others }}
+        {{ partial "project-compact.html" (dict "project" .) }}
+      {{- end }}
+    </div>
   </div>
+</section>
 
-  <div class="cv-section">
-    <div class="cv-left">
-      <div class="cv-title">Full academic CV</div>
-      <div class="cv-sub">
-        Education, publications, awards &amp; teaching &mdash; updated {{ now.Format "January 2006" }}
+<!-- Publications -->
+<section class="section" id="publications" aria-labelledby="publications-title">
+  <div class="container">
+    <header class="section__header">
+      <p class="section__eyebrow">03 — Publications</p>
+      <h2 class="section__title" id="publications-title">Publications</h2>
+      <p class="section__lede">Peer-reviewed papers, workshop abstracts, and juried XR program submissions. Venue metadata and author order follow the publisher DOI record.</p>
+    </header>
+
+    <ol class="publication-list">
+      {{- range $publications }}
+        {{ partial "publication.html" . }}
+      {{- end }}
+    </ol>
+  </div>
+</section>
+
+<!-- Curriculum Vitae -->
+<section class="section" id="cv" aria-labelledby="cv-title">
+  <div class="container">
+    <header class="section__header">
+      <p class="section__eyebrow">04 — Curriculum Vitae</p>
+      <h2 class="section__title" id="cv-title">Curriculum Vitae</h2>
+    </header>
+
+    <div class="cv-card">
+      <div class="cv-card__body">
+        <h3 class="cv-card__title">Two-page PDF</h3>
+        <p class="cv-card__text">Education, publications, and research experience. PhD in Computer Science conferred {{ $params.phd_conferred }}.</p>
+      </div>
+      <div class="cv-card__actions">
+        <a class="btn btn--primary" href="{{ $params.cv_file | relURL }}">
+          {{ partial "icon.html" "download" }} Download CV <span class="btn__hint">(PDF)</span>
+        </a>
       </div>
     </div>
-
-    <a href="{{ $params.cv_file }}" class="cv-btn" target="_blank" rel="noopener noreferrer">
-      &darr; Bourne_Resume.pdf
-    </a>
   </div>
 </section>
-
-<div class="divider"></div>
 
 <!-- Contact -->
-<section id="contact">
-  <div class="section-header">
-    <span class="section-label">Contact</span>
-  </div>
+<section class="section" id="contact" aria-labelledby="contact-title">
+  <div class="container">
+    <header class="section__header">
+      <p class="section__eyebrow">05 — Contact</p>
+      <h2 class="section__title" id="contact-title">Contact</h2>
+      <p class="section__lede">For research collaborations, academic enquiries, and industry research roles in XR, AI, and robotics.</p>
+    </header>
 
-  <div class="contact-grid">
-    <div class="contact-item contact-email">
-      <div class="contact-type">EMAIL</div>
-      <div class="contact-val">
-        <a href="mailto:{{ $params.email }}">{{ $params.email }}</a>
-      </div>
-    </div>
-
-    <div class="contact-item contact-institution">
-      <div class="contact-type">INSTITUTION</div>
-      <div class="contact-val">
-        <a href="{{ $params.institution_url }}" target="_blank" rel="noopener noreferrer">
-          {{ $params.institution }}
-        </a>
-      </div>
-    </div>
-
-    <div class="contact-item contact-code">
-      <div class="contact-type">GITHUB</div>
-      <div class="contact-val">
-        <a href="https://{{ $params.github }}" target="_blank" rel="noopener noreferrer">
-          {{ $params.github }}
-        </a>
-      </div>
-    </div>
-
-    <div class="contact-item contact-publication">
-      <div class="contact-type">GOOGLE SCHOLAR</div>
-      <div class="contact-val">
-        <a href="https://{{ $params.scholar }}" target="_blank" rel="noopener noreferrer">
-          scholar.google.com
-        </a>
-      </div>
-    </div>
+    <ul class="contact-list">
+      <li class="contact">
+        <p class="contact__label">Email</p>
+        <p class="contact__value"><a href="mailto:{{ $params.email }}">{{ $params.email }}</a></p>
+      </li>
+      <li class="contact">
+        <p class="contact__label">Institution</p>
+        <p class="contact__value"><a href="{{ $params.institution_url }}" target="_blank" rel="noopener noreferrer">{{ $params.institution }}</a></p>
+      </li>
+      <li class="contact">
+        <p class="contact__label">GitHub</p>
+        <p class="contact__value"><a href="https://{{ $params.github }}" target="_blank" rel="noopener noreferrer">{{ $params.github }}</a></p>
+      </li>
+      <li class="contact">
+        <p class="contact__label">Google Scholar</p>
+        <p class="contact__value"><a href="https://{{ $params.scholar }}" target="_blank" rel="noopener noreferrer">scholar.google.com</a></p>
+      </li>
+    </ul>
   </div>
 </section>
-
 {{ end }}

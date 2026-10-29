@@ -1,20 +1,37 @@
-baseURL = "https://yourusername.github.io/"
+baseURL = "https://bowenyuan95.github.io/"
 locale = "en-us"
 title = "Bowen Yuan"
+enableRobotsTXT = true
+
+# The site is a single page; no content uses taxonomies, and the generated
+# /tags/ and /categories/ pages were empty. Disable them to keep the build clean.
+disableKinds = ["taxonomy", "term"]
 
 [params]
   name = "Bowen Yuan"
-  role = "PhD Candidate"
-  browser_title = "Bowen Yuan - Researcher & Developer"
-  institution = "Adelaide University (AU)"
+
+  # Academic identity (PhD conferred 28 September 2026).
+  role = "PhD in Computer Science"
+  institution = "Adelaide University"
   institution_url = "https://empathiccomputing.org/team/bowen-yuan/"
-  bio = "I am Bowen Yuan, a PhD candidate in Computer Science at the Adelaide University, working at the intersection of Human–Computer Interaction, Augmented Reality, and AI. My research focuses on transforming expert demonstrations into adaptive, spatially grounded AR task guidance using multimodal signals such as gaze and motion, with publications in ACM CHI, IEEE VR, and ISMAR, and a broader goal of building intelligent systems that make complex real-world tasks more intuitive and efficient."
+  phd_conferred = "28 September 2026"
+
+  # Positioning line used in the hero.
+  positioning = "Human–AI Interaction for Spatial and Physical Tasks"
+
+  browser_title = "Bowen Yuan — Human–AI Interaction for Spatial and Physical Tasks"
+  description = "Bowen Yuan, PhD in Computer Science (Adelaide University), researches human–AI interaction for spatial and physical tasks: XR task guidance, multimodal interaction, and embodied AI."
+
+  bio = """I design and study human–AI systems that help people carry out complex spatial and physical tasks. My research turns expert demonstrations into adaptive augmented-reality guidance, using multimodal signals such as gaze, motion, speech, and spatial context to decide what guidance to show, when, and where. I am now extending this work toward embodied AI agents and human–robot collaboration in immersive environments."""
 
   email = "Bowen.Yuan@adelaide.edu.au"
   github = "github.com/BowenYuan95"
   scholar = "scholar.google.com/citations?hl=en&user=DTQsOloAAAAJ"
-  cv_file = "/files/Bourne_Resume.pdf"
-  status = "Available for collaborations"
+
+  # Canonical CV file. Bourne_Resume.pdf is kept as a byte-identical legacy
+  # copy so previously shared links keep working.
+  cv_file = "/files/Bowen_Yuan_CV.pdf"
+  cv_legacy_file = "/files/Bourne_Resume.pdf"
 
 [markup]
   [markup.goldmark]

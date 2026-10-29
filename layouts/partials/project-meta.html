@@ -1,0 +1,20 @@
+{{- /*
+  Publication / year / status line for a research project.
+  Input: a project map from data/projects.json.
+*/ -}}
+{{- $project := . -}}
+{{- $pub := $project.publication -}}
+<p class="project__meta">
+  {{- if $pub -}}
+    <span class="venue-badge">{{ $pub.venue }}</span>
+    {{- with $pub.venue_detail }}
+    <span class="project__meta-item">{{ . }}</span>
+    {{- end }}
+    {{- $status := $pub.status | default "Published" -}}
+    {{- $slug := "progress" -}}
+    {{- if eq $status "Published" }}{{ $slug = "published" }}{{ else if eq $status "Accepted" }}{{ $slug = "accepted" }}{{ end -}}
+    <span class="status status--{{ $slug }}"><span class="status__dot"></span>{{ $status }}</span>
+  {{- else -}}
+    <span class="project__meta-item">Ongoing research</span>
+  {{- end -}}
+</p>

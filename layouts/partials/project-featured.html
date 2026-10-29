@@ -1,0 +1,53 @@
+{{- /*
+  Featured research card.
+  Input: dict "project" (a project map from data/projects.json).
+  DOM order is the mobile order (meta, title, media, summary, key result, tags,
+  actions, details); CSS grid-template-areas reorders it to media-left /
+  information-right on desktop, so no information is duplicated per breakpoint.
+*/ -}}
+{{- $project := .project -}}
+{{- $pub := $project.publication -}}
+{{- $hasMedia := or $project.youtube_id $project.thumbnail -}}
+<article class="project project--featured{{ if not $hasMedia }} project--wide{{ end }}">
+  {{ partial "project-meta.html" $project }}
+
+  <h3 class="project__title">{{ $project.title }}</h3>
+
+  {{- if $hasMedia }}
+  <div class="project__media">
+    {{- if $project.youtube_id -}}
+      {{ partial "youtube.html" (dict "id" $project.youtube_id "title" (printf "%s — demo video" $project.title) "caption" $project.video_caption "plate" $project.short_title) }}
+    {{- else -}}
+      <img class="project__image" src="{{ $project.thumbnail | relURL }}" alt="{{ $project.title }} research thumbnail" width="640" height="360" loading="lazy" decoding="async">
+    {{- end }}
+  </div>
+  {{- end }}
+
+  <p class="project__summary">{{ $project.summary }}</p>
+
+  {{- with $project.key_result }}
+  {{- /* Label the highlighted sentence honestly: an outcome only when the copy
+         actually reports one, otherwise a technical contribution. */ -}}
+  {{- $label := "Contribution" -}}
+  {{- if findRE `(?i)(user study|found|shows?|improv|reduc|prefer|%|participants|accuracy|demand)` . }}{{ $label = "Key result" }}{{ end }}
+  <p class="project__result">
+    <span class="project__result-label">{{ $label }}</span>
+    {{ . }}
+  </p>
+  {{- end }}
+
+  <div class="project__tags">
+    {{ partial "tag-list.html" $project.tags }}
+  </div>
+
+  {{ partial "project-actions.html" $project }}
+
+  {{- with $project.full_description }}
+  <details class="project__details">
+    <summary>Read full description</summary>
+    <div class="project__details-body">
+      <p>{{ . }}</p>
+    </div>
+  </details>
+  {{- end }}
+</article>

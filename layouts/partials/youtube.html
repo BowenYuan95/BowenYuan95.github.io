@@ -1,22 +1,32 @@
 {{- /*
-  Responsive, privacy-enhanced YouTube embed.
+  Lightweight, privacy-friendly YouTube player.
 
   Usage:
     {{ partial "youtube.html" "https://youtu.be/VIDEO_ID" }}
     {{ partial "youtube.html" (dict "url" "https://youtu.be/VIDEO_ID" "title" "Demo video" "caption" "Optional caption") }}
+    {{ partial "youtube.html" (dict "id" "VIDEO_ID" "title" "Demo video") }}
 
-  Accepts a full YouTube URL (watch, youtu.be, shorts, live, embed) or a bare ID.
-  Uses youtube-nocookie.com and lazy-loads the iframe.
+  Behaviour:
+    - Renders a 16:9 poster (reserved space, so no layout shift) with the video
+      thumbnail served from YouTube's image CDN. No iframe, no cookies and no
+      YouTube JavaScript are loaded until the visitor presses the play button.
+    - On click, static/js/site.js swaps the poster for an iframe pointing at
+      youtube-nocookie.com with autoplay enabled (user-initiated only).
+    - Without JavaScript the button is inert, so a visible "Watch on YouTube"
+      link is always provided next to the player by the calling template, and a
+      <noscript> fallback link is rendered here as well.
 */ -}}
 {{- $url := "" -}}
 {{- $id := "" -}}
-{{- $title := "YouTube video" -}}
+{{- $title := "Research demo video" -}}
 {{- $caption := "" -}}
+{{- $plate := "" -}}
 
 {{- if reflect.IsMap . -}}
-  {{- $url = .url | default (.id | default "") -}}
+  {{- $url = .id | default .url | default "" -}}
   {{- $title = .title | default $title -}}
   {{- $caption = .caption | default "" -}}
+  {{- $plate = .plate | default "" -}}
 {{- else -}}
   {{- $url = . | default "" -}}
 {{- end -}}
@@ -31,18 +41,33 @@
 {{- end -}}
 
 {{- with $id -}}
-<div class="project-video">
-  <div class="video-frame">
-    <iframe
-      src="https://www.youtube-nocookie.com/embed/{{ . }}"
-      title="{{ $title }}"
+<div class="video" data-video-id="{{ . }}" data-video-title="{{ $title }}">
+  <div class="video__poster">
+    {{- if $plate }}
+    <div class="video__plate" aria-hidden="true">
+      <span class="video__plate-title">{{ $plate }}</span>
+      <span class="video__plate-meta">Research demo</span>
+    </div>
+    {{- end }}
+    <img
+      class="video__thumb"
+      src="https://i.ytimg.com/vi/{{ . }}/hqdefault.jpg"
+      alt=""
+      width="640" height="360"
       loading="lazy"
-      referrerpolicy="strict-origin-when-cross-origin"
-      allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-      allowfullscreen></iframe>
+      decoding="async"
+      data-video-thumb>
+    <button class="video__play" type="button" aria-label="Play video: {{ $title }}">
+      <span class="video__play-badge">{{ partial "icon.html" "play" }}</span>
+    </button>
   </div>
   {{- with $caption }}
-  <div class="video-caption">{{ . }}</div>
+  <p class="video__caption">{{ . }}</p>
   {{- end }}
+  <noscript>
+    <p class="video__fallback">
+      <a class="link-arrow" href="https://www.youtube.com/watch?v={{ . }}" target="_blank" rel="noopener noreferrer">Watch this video on YouTube{{ partial "icon.html" "external" }}</a>
+    </p>
+  </noscript>
 </div>
 {{- end -}}

@@ -1,0 +1,55 @@
+{{- /*
+  Publication list item.
+  Input: a project map whose .publication record holds the verified metadata.
+  Authors are rendered only when verified (Crossref); the site owner is marked
+  up as .publication__author--self.
+*/ -}}
+{{- $project := . -}}
+{{- $pub := $project.publication -}}
+{{- $self := site.Params.name -}}
+<li class="publication">
+  <div class="publication__meta">
+    <span class="venue-badge">{{ $pub.venue }}</span>
+    <span class="project__meta-item">{{ $pub.year }}</span>
+    {{- with $pub.type }}
+    <span class="publication__type">{{ . }}</span>
+    {{- end }}
+    {{- if eq $pub.status "Accepted" }}
+    <span class="status status--accepted"><span class="status__dot"></span>Accepted</span>
+    {{- end }}
+  </div>
+
+  <div class="publication__body">
+    <h3 class="publication__title">
+      {{- $title := $pub.title | default $project.title -}}
+      {{- if $pub.doi -}}
+      <a href="https://doi.org/{{ $pub.doi }}" target="_blank" rel="noopener noreferrer">{{ $title }}</a>
+      {{- else -}}
+      {{ $title }}
+      {{- end -}}
+    </h3>
+
+    {{- with $pub.authors }}
+    <p class="publication__authors">
+      {{- range $i, $author := . -}}
+        {{- if $i }}, {{ end -}}
+        {{- if eq $author $self }}<strong class="publication__author--self">{{ $author }}</strong>{{ else }}{{ $author }}{{ end -}}
+      {{- end -}}
+    </p>
+    {{- end }}
+
+    <div class="publication__actions">
+      {{- if $pub.doi }}
+      <a class="link-arrow" href="https://doi.org/{{ $pub.doi }}" target="_blank" rel="noopener noreferrer">Paper (DOI){{ partial "icon.html" "external" }}</a>
+      {{- else }}
+      <span class="publication__note">Accepted; DOI pending</span>
+      {{- end }}
+      {{- if $project.youtube_id }}
+      <a class="link-arrow" href="https://www.youtube.com/watch?v={{ $project.youtube_id }}" target="_blank" rel="noopener noreferrer">Demo video{{ partial "icon.html" "external" }}</a>
+      {{- end }}
+      {{- with $project.code_url }}
+      <a class="link-arrow" href="{{ . }}" target="_blank" rel="noopener noreferrer">Code{{ partial "icon.html" "external" }}</a>
+      {{- end }}
+    </div>
+  </div>
+</li>

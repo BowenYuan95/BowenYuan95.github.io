@@ -27,7 +27,8 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: "latest"
+          # Pinned to the version the site is developed and verified against.
+          hugo-version: "0.161.1"
           extended: true
 
       - name: Build

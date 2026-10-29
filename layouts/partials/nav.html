@@ -1,9 +1,13 @@
-<nav>
-  <span class="nav-name">{{ upper .Site.Params.name }}</span>
-  <div class="nav-links">
-    <a href="/" {{ if .IsHome }}class="active"{{ end }}>about</a>
-    <a href="/#projects">projects</a>
-    <a href="{{ .Site.Params.cv_file }}" target="_blank">cv</a>
-    <a href="/#contact">contact</a>
+<header class="site-header">
+  <div class="container site-header__inner">
+    <nav class="nav" aria-label="Primary">
+      <a class="nav__brand" href="{{ "" | relURL }}">{{ site.Params.name }}</a>
+      <ul class="nav__links">
+        <li><a class="nav__link" href="{{ "/#research" | relURL }}">Research</a></li>
+        <li><a class="nav__link" href="{{ "/#publications" | relURL }}">Publications</a></li>
+        <li><a class="nav__link" href="{{ "/#cv" | relURL }}">CV</a></li>
+        <li><a class="nav__link" href="{{ "/#contact" | relURL }}">Contact</a></li>
+      </ul>
+    </nav>
   </div>
-</nav>
+</header>

@@ -1,0 +1,38 @@
+{{- /*
+  Compact research card for the "Other research" listing.
+  Input: dict "project" (a project map from data/projects.json).
+  Order: meta, title, media, summary, tags, actions, details.
+*/ -}}
+{{- $project := .project -}}
+<article class="project project--compact">
+  {{ partial "project-meta.html" $project }}
+
+  <h3 class="project__title">{{ $project.title }}</h3>
+
+  {{- if or $project.youtube_id $project.thumbnail }}
+  <div class="project__media">
+    {{- if $project.youtube_id -}}
+      {{ partial "youtube.html" (dict "id" $project.youtube_id "title" (printf "%s — demo video" $project.title) "caption" $project.video_caption "plate" $project.short_title) }}
+    {{- else -}}
+      <img class="project__image" src="{{ $project.thumbnail | relURL }}" alt="{{ $project.title }} research thumbnail" width="640" height="360" loading="lazy" decoding="async">
+    {{- end }}
+  </div>
+  {{- end }}
+
+  <p class="project__summary">{{ $project.summary }}</p>
+
+  <div class="project__tags">
+    {{ partial "tag-list.html" $project.tags }}
+  </div>
+
+  {{ partial "project-actions.html" $project }}
+
+  {{- with $project.full_description }}
+  <details class="project__details">
+    <summary>Read full description</summary>
+    <div class="project__details-body">
+      <p>{{ . }}</p>
+    </div>
+  </details>
+  {{- end }}
+</article>
